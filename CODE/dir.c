@@ -9,7 +9,6 @@
 #include"camera.h"
 #include"headfile.h"
 #include "dir.h"
-#include "Balance1.h"
 
 #define S_MOTOR_PIN   ATOM1_CH1_P33_9       //定义舵机引脚
 
@@ -39,10 +38,10 @@ void dir_pd(void)
     err_last=err_next;
     err_next=err;
 
-    duty =600;// 750 - increment;
+    duty = 750 - increment;
     if(duty>900) duty=900;
     if(duty<600) duty=600;
-  //  lcd_showuint16(0,5,duty);
+    lcd_showuint16(0,5,duty);
 
     pwm_duty(S_MOTOR_PIN,duty);
 

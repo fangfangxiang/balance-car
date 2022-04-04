@@ -13,10 +13,8 @@
 
 //函数：
 void shizi_imageprocess (void);   //十字处理
-void check_starting_line(int start_point, int end_point);   //入库
-void chuku(void);   //出库
-void huandao_L(void);   //环岛
-void sancha(void);//三叉
+void huandao(void);   //环岛
+void  sancha(void);
 
 
 #endif /* CODE_IMAGEPROCESS_H_ */

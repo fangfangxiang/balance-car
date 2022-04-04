@@ -200,13 +200,13 @@ void buxian(int x0,int y0,int x1,int y1)//补线
 
 }
 
-void buxian2(int x0,int y0,int x1,int y1)//补线并延长至下边
+void buxian2(int x0,int y0,int x1,int y1)//补线并延长
 {
      int x,i;
      float K = (x0-x1) * 1.0 / (y0-y1);
      if(K>20) K=20;
      if(K<-20) K=-20;
-     for(i=2;i< y1;i++)
+     for(i=2;i< 110;i++)
      {
          x = x0+(i-y0)*K;
          Bin_Image[120-i][ 188-x ] = 0;
@@ -214,6 +214,8 @@ void buxian2(int x0,int y0,int x1,int y1)//补线并延长至下边
      }
 
 }
+
+
 
 
 

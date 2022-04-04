@@ -205,9 +205,9 @@ int SBB_Get_BalancePID(float Angle,float Gyro)
 //#define Motor_Ki     2.1               // 后轮电机PID参数***********44444444444444！！！！！（要调）
 
 
-float Motor_Kp =  5.2   ;          // 后轮电机PID参数
-float Motor_Ki =  2.1     ;          // 后轮电机PID参数***********44444444444444！！！！！（要调）
-float Motor_Kd  = 0.1;
+#define Motor_Kp   4.2             // 后轮电机PID参数
+#define Motor_Ki   0.01               // 后轮电机PID参数***********44444444444444！！！！！（要调）
+#define Motor_Kd   0.01
 
 
 int32 integral;
@@ -217,18 +217,18 @@ int SBB_Get_MotorPI (uint16 Encoder,uint16 Target)
     static int Pwm ;
     Motor_Bias = Target - Encoder;
     integral += Motor_Bias;
-   // lcd_showint16(0,4, integral);
+    lcd_showint16(0,4, integral);
 
     if((Motor_Ki * integral) <- 1000)      integral= -1000 / Motor_Ki; //限幅
-    else if((Motor_Ki * integral) > 3500)  integral =  3500 / Motor_Ki; //限幅
+    else if((Motor_Ki * integral) > 1500)  integral =  1500 / Motor_Ki; //限幅
 
     Pwm = Motor_Kp * Motor_Bias + Motor_Ki * integral + Motor_Kd * (Motor_Bias - Motor_Last_Bias);
-    //lcd_showint16(0,5, Pwm);
+    lcd_showint16(0,5, Pwm);
     //==位置式PID
     Motor_Last_Bias = Motor_Bias;
 
 
-    if(Pwm > 8000) Pwm = 8000;               // 限幅
+    if(Pwm > 5000) Pwm = 5000;               // 限幅
     else if(Pwm < 0) Pwm = 0;         // 限幅
     return Pwm;
 
